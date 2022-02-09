@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import './toggle.css';
 
 const InputWrapper = styled.label`
   position: relative;
@@ -12,11 +11,15 @@ const Input = styled.input`
   opacity: 0;
   width: 0;
   height: 0;
-  &:checked + span {
-    background-color: blue;
-
-    &:before {
-      transform: translateX(140%);
+  &:checked {
+    + span {
+      &:before {
+        width: 100%;
+        opacity: 100%;
+      }
+      + div {
+        transform: translateX(25px);
+      }
     }
   }
 `;
@@ -29,19 +32,32 @@ const Slider = styled.span`
   border-radius: 100px;
   background-color: lightgray;
   position: relative;
-  transition: background-color 0.2s;
+  transition: all 0.5s;
+  overflow: hidden;
 
   &:before {
     content: '';
+    left: 0px;
+    width: 10%;
+    height: 120%;
+    background-color: blue;
+    opacity: 0%;
     position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 17px;
-    height: 17px;
-    border-radius: 15px;
-    transition: 0.2s;
-    background: white;
+    transition: 0.5s;
   }
+`;
+
+const Div = styled.div`
+  content: '';
+  position: relative;
+  top: -21px;
+  left: 4px;
+  width: 17px;
+  height: 17px;
+  border-radius: 15px;
+  transition: 0.5s;
+  background: white;
+  cursor: pointer;
 `;
 
 const Toggle = ({ onChange }) => {
@@ -51,6 +67,7 @@ const Toggle = ({ onChange }) => {
       <label className="togleswitch">
         <Input type="checkbox" onChange={onChange} />
         <Slider />
+        <Div />
       </label>
     </InputWrapper>
   );
