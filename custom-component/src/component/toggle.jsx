@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const InputWrapper = styled.label`
-  position: relative;
-`;
-
 const Input = styled.input`
   position: relative;
   display: inline-block;
@@ -62,14 +58,11 @@ const Div = styled.div`
 
 const Toggle = ({ onChange }) => {
   return (
-    <InputWrapper>
-      <h3>Toggle</h3>
-      <label className="togleswitch">
-        <Input type="checkbox" onChange={onChange} />
-        <Slider />
-        <Div />
-      </label>
-    </InputWrapper>
+    <label className="togleswitch">
+      <Input type="checkbox" onChange={onChange} />
+      <Slider />
+      <Div />
+    </label>
   );
 };
 

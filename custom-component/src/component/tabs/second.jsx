@@ -1,8 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Content = styled.div`
+  position: absolute;
+  display: contents;
+  top: 500px;
+  left: 50px;
+`;
+
 const Second = props => {
-  console.log(props);
-  return <div>second</div>;
+  return <Content>Tab menu TWO</Content>;
 };
 export default Second;

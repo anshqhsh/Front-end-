@@ -1,8 +1,8 @@
 import React from 'react';
-import './modal.css';
 import First from './tabs/first';
 import Second from './tabs/second';
 import Third from './tabs/third';
+import styled from 'styled-components';
 
 const TabList = {
   0: <First />,
@@ -10,27 +10,19 @@ const TabList = {
   2: <Third />,
 };
 
-const Modal = props => {
-  console.log(props.tab);
+const Contents = styled.div`
+  text-align: center;
+`;
 
+const Modal = props => {
   return (
-    <>
-      <h3>Tab</h3>
-      <section>
-        <ul class="tabs">
-          <li></li>
-          <li className="tab"></li>
-          <li className="tab"></li>
-        </ul>
-        <div className="contentArea">
-          {props.tab === 'first'
-            ? TabList[0]
-            : props.tab === 'second'
-            ? TabList[1]
-            : TabList[2]}
-        </div>
-      </section>
-    </>
+    <Contents className="tabContent">
+      {props.tab === 'first'
+        ? TabList[0]
+        : props.tab === 'second'
+        ? TabList[1]
+        : TabList[2]}
+    </Contents>
   );
 };
 export default Modal;

@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Content = styled.div`
+  vertical-align: center;
+`;
+
 const Third = props => {
-  console.log(props);
-  return <div>third</div>;
+  return <Content>Tab menu THREE</Content>;
 };
 export default Third;
