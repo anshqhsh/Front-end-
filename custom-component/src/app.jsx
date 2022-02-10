@@ -3,10 +3,12 @@ import './app.css';
 
 import Toggle from './component/toggle';
 import Modal from './component/modal';
+import Tab from './component/tab';
 
 function App() {
   const [toggled, setToggled] = useState(false);
   const [opened, setOpened] = useState(false);
+  const [tabed, setTab] = useState('first');
 
   return (
     <div className="App">
@@ -26,6 +28,31 @@ function App() {
           setOpened(false);
         }}
       />
+      <button
+        className="tab "
+        onClick={() => {
+          setTab('first');
+        }}
+      >
+        first
+      </button>
+      <button
+        class="tab"
+        onClick={() => {
+          setTab('second');
+        }}
+      >
+        second
+      </button>
+      <button
+        class="tab"
+        onClick={() => {
+          setTab('third');
+        }}
+      >
+        third
+      </button>
+      <Tab tab={tabed} />
     </div>
   );
 }
