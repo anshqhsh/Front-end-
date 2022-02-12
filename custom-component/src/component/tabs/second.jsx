@@ -1,11 +1,8 @@
-import React from 'react';
+import { React, useState } from 'react';
 import styled from 'styled-components';
 
 const Content = styled.div`
-  position: absolute;
-  display: contents;
-  top: 500px;
-  left: 50px;
+  text-align: center;
 `;
 
 const Second = props => {

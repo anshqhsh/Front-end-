@@ -8,19 +8,18 @@ import Tag from './component/tag';
 
 function App() {
   const types = ['first', 'second', 'third'];
-
-  const tags = [
-    { key: 1, text: 'text1' },
-    { key: 2, text: 'text2' },
+  let tags = [
+    { id: 1, text: 'hi 1' },
+    { id: 2, text: 'hi 2' },
   ];
 
   const [toggled, setToggled] = useState(false);
   const [opened, setOpened] = useState(false);
   const [active, setActive] = useState(types[0]);
-  const [tagItem, setTag] = useState(tags);
+  const [tag, setTag] = useState(tags);
 
   const addTag = text => {
-    tags.push({ key: Date.now(), text: { text } });
+    tags = [...tags, { id: Date.now(), text }];
     setTag(tags);
     console.log(tags);
   };
@@ -80,7 +79,7 @@ function App() {
         <Tab tab={active} />
       </div>
       <div className="container" id="tag">
-        <Tag items={tagItem} addTag={addTag} />
+        <Tag tags={tags} addtag={addTag} />
       </div>
       <div className="container"></div>
     </div>

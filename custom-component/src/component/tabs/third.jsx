@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Content = styled.div`
-  vertical-align: center;
+  text-align: center;
 `;
 
 const Third = props => {
