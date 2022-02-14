@@ -15,7 +15,6 @@ const Contents = styled.div`
 `;
 
 const Modal = props => {
-  console.log(Modal);
   return (
     <Contents className="tabContent">
       {props.tab === 'first'

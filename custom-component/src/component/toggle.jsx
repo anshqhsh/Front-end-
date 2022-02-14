@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const SliderContainer = styled.div`
+  position: absolute;
+  left: 50%;
+`;
 const Input = styled.input`
   position: relative;
   display: inline-block;
@@ -43,7 +47,7 @@ const Slider = styled.span`
   }
 `;
 
-const Div = styled.div`
+const Circle = styled.div`
   content: '';
   position: relative;
   top: -21px;
@@ -55,14 +59,28 @@ const Div = styled.div`
   background: white;
   cursor: pointer;
 `;
+const CheckToggleP = styled.p`
+  position: absolute;
+  text-align: center;
+`;
+const Div = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
 
-const Toggle = ({ onChange }) => {
+const Toggle = ({ onChange, toggled }) => {
   return (
-    <label className="togleswitch">
-      <Input type="checkbox" onChange={onChange} />
-      <Slider />
-      <Div />
-    </label>
+    <Div>
+      <SliderContainer className="sliderContainer">
+        <label className="togleswitch">
+          <Input type="checkbox" onChange={onChange} />
+          <Slider />
+          <Circle />
+        </label>
+      </SliderContainer>
+      Toggle Switch {toggled ? 'on' : 'off'}
+    </Div>
   );
 };
 

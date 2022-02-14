@@ -6,7 +6,9 @@ const Modal = props => {
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
         <section>
-          <button onClick={close}>X</button>
+          <button id="closeBtn" onClick={close}>
+            X
+          </button>
           <div>HELLO CODESTATE!</div>
         </section>
       ) : null}

@@ -1,6 +1,6 @@
 .modal {
   display: none;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
@@ -12,6 +12,7 @@
   outline: none;
   cursor: pointer;
   border: 0;
+  top: 50%;
 }
 .modal > section {
   width: 400px;
@@ -28,7 +29,6 @@
   position: absolute;
   left: 50%;
   transform: translate(-50%, 50%);
-  color: black;
   background-color: transparent;
 }
 .modal > section div {
@@ -40,6 +40,10 @@
 .modal.openModal {
   display: flex;
   align-items: center;
+}
+#closeBtn {
+  position: absolute;
+  top: 100px;
 }
 @keyframes modal-show {
   from {

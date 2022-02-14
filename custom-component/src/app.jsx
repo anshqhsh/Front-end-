@@ -1,36 +1,47 @@
-import { React, useState } from 'react';
+import { Component, React, useState } from 'react';
 import './app.css';
 
 import Toggle from './component/toggle';
 import Modal from './component/modal';
 import Tab from './component/tab';
 import Tag from './component/tag';
+import ClickToEdit from './component/clickToEdit';
 
 function App() {
   const types = ['first', 'second', 'third'];
 
-  const tags = [
-    { key: 1, text: 'text1' },
-    { key: 2, text: 'text2' },
-  ];
-
   const [toggled, setToggled] = useState(false);
   const [opened, setOpened] = useState(false);
   const [active, setActive] = useState(types[0]);
-  const [tagItem, setTag] = useState(tags);
+  const [tags, setTag] = useState([]);
+  const [clickName, setClickName] = useState('준혁');
+  const [clickAge, setClickAge] = useState('30');
 
   const addTag = text => {
-    tags.push({ key: Date.now(), text: { text } });
-    setTag(tags);
-    console.log(tags);
+    const tag = [...tags, { key: Date.now(), text: text }];
+    setTag(tag);
+    console.log('add');
+  };
+  const deleteTag = key => {
+    const a = tags.filter(item => item.key !== key);
+    setTag(a);
+    console.log('delete compelete');
+  };
+
+  // click to edit
+  const print = (name, age) => {
+    setClickName(name);
+    setClickAge(age);
   };
 
   return (
     <div className="App">
       <div className="container" id="toggle">
         <h3>Toggle</h3>
-        <Toggle onChange={e => setToggled(e.target.checked)} />
-        <p>Toggle Switch {toggled ? 'on' : 'off'}</p>
+        <Toggle
+          onChange={e => setToggled(e.target.checked)}
+          toggled={toggled}
+        />
       </div>
       <div className="container" id="modal">
         <h3>Modal</h3>
@@ -80,9 +91,14 @@ function App() {
         <Tab tab={active} />
       </div>
       <div className="container" id="tag">
-        <Tag items={tagItem} addTag={addTag} />
+        <Tag items={tags} addTag={addTag} deleteTag={deleteTag} />
       </div>
-      <div className="container"></div>
+      <div className="container" id="AutoComplete"></div>
+      <div className="container" id="AutoComplete">
+        <h3>Click to Edit</h3>
+        <ClickToEdit print={print} />
+        이름 {clickName} 나이 {clickAge}
+      </div>
     </div>
   );
 }
