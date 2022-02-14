@@ -1,31 +1,41 @@
-import { React } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ContentsSpan = styled.span`
-  width: 50px;
-  height: 20px;
+  display: inline-block;
+  width: 130px;
+  height: 30px;
   border-radius: 5px;
   border: none;
   background-color: blue;
   color: white;
+  margin: 5px;
 `;
 const XBtn = styled.button`
-  border: none;
+  float: right;
+  border: 0;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
+  margin-top: 5px;
+  margin-right: 5px;
   border-radius: 50%;
   background: white;
 `;
+const TextSpan = styled.p`
+  display: inline-block;
+  margin: 5px;
+`;
+
 const TagsContent = props => {
   const deleteTag = () => {
     props.deleteTag(props.itemKey);
     console.log(props.itemKey);
   };
 
-  console.log('tagcontent');
-  console.log(props);
   return (
     <ContentsSpan className="tag">
-      {props.itemText}
+      <TextSpan>{props.itemText}</TextSpan>
       <XBtn className="deleteKey" onClick={deleteTag}>
         x
       </XBtn>

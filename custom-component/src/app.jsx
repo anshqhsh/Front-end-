@@ -1,4 +1,5 @@
-import { Component, React, useState } from 'react';
+import React, { useState } from 'react';
+
 import './app.css';
 
 import Toggle from './component/toggle';
@@ -13,9 +14,10 @@ function App() {
   const [toggled, setToggled] = useState(false);
   const [opened, setOpened] = useState(false);
   const [active, setActive] = useState(types[0]);
-  const [tags, setTag] = useState([]);
-  const [clickName, setClickName] = useState('준혁');
-  const [clickAge, setClickAge] = useState('30');
+  const [tags, setTag] = useState([{ key: 1, text: 'CodeStates' }]);
+  const [activeTag, setActiveTag] = useState('');
+  const [clickName, setClickName] = useState('');
+  const [clickAge, setClickAge] = useState('');
 
   const addTag = text => {
     const tag = [...tags, { key: Date.now(), text: text }];
@@ -32,6 +34,10 @@ function App() {
   const print = (name, age) => {
     setClickName(name);
     setClickAge(age);
+  };
+
+  const tag = text => {
+    setActiveTag(text);
   };
 
   return (
@@ -91,13 +97,19 @@ function App() {
         <Tab tab={active} />
       </div>
       <div className="container" id="tag">
-        <Tag items={tags} addTag={addTag} deleteTag={deleteTag} />
+        <h3>Tag</h3>
+        <Tag
+          items={tags}
+          addTag={addTag}
+          deleteTag={deleteTag}
+          activeTag={activeTag}
+          tag={tag}
+        />
       </div>
       <div className="container" id="AutoComplete"></div>
-      <div className="container" id="AutoComplete">
+      <div className="container" id="cToe">
         <h3>Click to Edit</h3>
-        <ClickToEdit print={print} />
-        이름 {clickName} 나이 {clickAge}
+        <ClickToEdit print={print} name={clickName} age={clickAge} />
       </div>
     </div>
   );

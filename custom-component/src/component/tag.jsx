@@ -1,18 +1,31 @@
-import { React } from 'react';
+import React, { useEffect } from 'react';
+
 import styled from 'styled-components';
 import TagsContent from './tagcontent';
 
 const Input = styled.input`
   border-style: none;
+  height: 28px;
+  margin: 5px;
+  :focus {
+    outline: none;
+  }
 `;
+
 const TagContainer = styled.div`
-  display: inline;
+  display: inline-block;
   position: absolute;
-  width: 500px;
-  height: 100px;
+  width: 800px;
+  height: 38px;
   top: 100px;
-  left: 200px;
+  left: 50px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
   text-align: center;
+`;
+
+const TagItem = styled.span`
+  display: inline-block;
 `;
 
 const Tag = props => {
@@ -29,6 +42,7 @@ const Tag = props => {
 
   //Typing
   const changeHandler = e => {
+    console.log(e);
     typing = e.target.value;
   };
 
@@ -36,23 +50,46 @@ const Tag = props => {
   const handleEnterPress = e => {
     if (e.key === 'Enter') {
       addTag(typing); // app State를 업데이트
+      props.tag('');
+      e.target.value = '';
     }
   };
 
+  const useOutside = () => {
+    const ClickOutside = e => {
+      console.log(e.target.id);
+      if (e.target.id === 'inputTag') {
+        props.tag('tagActive');
+      } else {
+        props.tag('');
+      }
+    };
+    useEffect(() => {
+      document.addEventListener('mousedown', ClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', ClickOutside);
+      };
+    });
+  };
+  useOutside();
+
   return (
-    <TagContainer className="tagcontainer">
-      {props.items.map(items => {
-        return (
-          <TagsContent
-            itemKey={items.key}
-            itemText={items.text}
-            deleteTag={deleteTag}
-          />
-        ); // 자식요소 반복시 유니크키 요청
-      })}
+    <TagContainer id={props.activeTag}>
+      <TagItem>
+        {props.items.map(items => {
+          return (
+            <TagsContent
+              itemKey={items.key}
+              itemText={items.text}
+              deleteTag={deleteTag}
+            />
+          ); // 자식요소 반복시 유니크키 요청
+        })}
+      </TagItem>
       <Input
+        id="inputTag"
         type="text"
-        placeholder="enter a tag..."
+        placeholder="Press enter to the tags"
         className="inputTag"
         onChange={changeHandler}
         onKeyUp={handleEnterPress}

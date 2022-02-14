@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const SliderContainer = styled.div`
   position: absolute;
-  left: 50%;
+  left: 425px;
+  top: 30px;
 `;
 const Input = styled.input`
   position: relative;
@@ -60,11 +61,14 @@ const Circle = styled.div`
   cursor: pointer;
 `;
 const CheckToggleP = styled.p`
+  width: 200px;
   position: absolute;
   text-align: center;
+  left: 350px;
+  top: 80px;
 `;
 const Div = styled.div`
-  position: absolute;
+  position: relative;
   width: 100%;
   height: 100%;
 `;
@@ -79,7 +83,7 @@ const Toggle = ({ onChange, toggled }) => {
           <Circle />
         </label>
       </SliderContainer>
-      Toggle Switch {toggled ? 'on' : 'off'}
+      <CheckToggleP>Toggle Switch {toggled ? 'on' : 'off'}</CheckToggleP>
     </Div>
   );
 };
