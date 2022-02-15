@@ -22,12 +22,10 @@ function App() {
   const addTag = text => {
     const tag = [...tags, { key: Date.now(), text: text }];
     setTag(tag);
-    console.log('add');
   };
   const deleteTag = key => {
     const a = tags.filter(item => item.key !== key);
     setTag(a);
-    console.log('delete compelete');
   };
 
   // click to edit
@@ -106,7 +104,6 @@ function App() {
           tag={tag}
         />
       </div>
-      <div className="container" id="AutoComplete"></div>
       <div className="container" id="cToe">
         <h3>Click to Edit</h3>
         <ClickToEdit print={print} name={clickName} age={clickAge} />

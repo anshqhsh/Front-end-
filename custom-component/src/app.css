@@ -1,3 +1,8 @@
+h3 {
+  text-align: left;
+  margin-left: 10px;
+}
+
 #modalButton {
   width: 120px;
   background-color: blue;
@@ -42,7 +47,6 @@
   transition: 0.2s;
 }
 
-/* 아이디 값으로 active를 일단 줌 */
 #tagActive {
-  border: 1px solid red;
+  border: 1px solid blue;
 }

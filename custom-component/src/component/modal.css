@@ -20,9 +20,8 @@
   margin: 0 auto;
   border-radius: 10px;
   background-color: #fff;
-  /* Modal Animation */
-  animation: modal-show 0.3s;
   overflow: hidden;
+  animation: modal-show 0.4s;
 }
 
 .modal > section button {
@@ -42,9 +41,10 @@
   align-items: center;
 }
 #closeBtn {
-  position: absolute;
+  position: flex;
   top: 100px;
 }
+
 @keyframes modal-show {
   from {
     opacity: 0;

@@ -2,6 +2,7 @@ import React from 'react';
 import First from './tabs/first';
 import Second from './tabs/second';
 import Third from './tabs/third';
+
 import styled from 'styled-components';
 
 const TabList = {

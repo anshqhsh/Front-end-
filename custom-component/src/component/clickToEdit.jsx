@@ -37,7 +37,6 @@ const ClickToEdit = props => {
         e.preventDefault(); // 새로고침 방지
         const name = inputAgeRef.current.value;
         const age = inputNameRef.current.value;
-        console.log(inputAgeRef);
         props.print(name, age);
       }
     };

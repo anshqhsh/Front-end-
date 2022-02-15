@@ -27,10 +27,10 @@ const TextSpan = styled.p`
   margin: 5px;
 `;
 
+// key를 받아 삭제
 const TagsContent = props => {
   const deleteTag = () => {
     props.deleteTag(props.itemKey);
-    console.log(props.itemKey);
   };
 
   return (

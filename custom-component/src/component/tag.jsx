@@ -42,13 +42,12 @@ const Tag = props => {
 
   //Typing
   const changeHandler = e => {
-    console.log(e);
     typing = e.target.value;
   };
 
   //Enter acting
   const handleEnterPress = e => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.target.value !== '') {
       addTag(typing); // app State를 업데이트
       props.tag('');
       e.target.value = '';
@@ -57,9 +56,8 @@ const Tag = props => {
 
   const useOutside = () => {
     const ClickOutside = e => {
-      console.log(e.target.id);
       if (e.target.id === 'inputTag') {
-        props.tag('tagActive');
+        props.tag('tagActive'); // tag에 id추가
       } else {
         props.tag('');
       }
@@ -79,11 +77,12 @@ const Tag = props => {
         {props.items.map(items => {
           return (
             <TagsContent
+              key={items.key} // 자식요소 반복시 유니크키 요청
               itemKey={items.key}
               itemText={items.text}
               deleteTag={deleteTag}
             />
-          ); // 자식요소 반복시 유니크키 요청
+          );
         })}
       </TagItem>
       <Input

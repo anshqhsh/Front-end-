@@ -5,8 +5,8 @@ const Modal = props => {
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
-        <section>
-          <button id="closeBtn" onClick={close}>
+        <section id="modalContainer">
+          <button className="buttonXBtn" id="closeBtn" onClick={close}>
             X
           </button>
           <div>HELLO CODESTATE!</div>
