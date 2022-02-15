@@ -15,7 +15,7 @@ const Contents = styled.div`
   text-align: center;
 `;
 
-const Modal = props => {
+const Tab = props => {
   return (
     <Contents className="tabContent">
       {props.tab === 'first'
@@ -26,4 +26,4 @@ const Modal = props => {
     </Contents>
   );
 };
-export default Modal;
+export default Tab;

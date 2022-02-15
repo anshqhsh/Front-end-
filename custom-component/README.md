@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# wanted_pre_onboarding
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Toggle
 
-## Available Scripts
+app.js에서 토글을 선택시 onChange와 toggled를 Toggele 컴포넌트에 전달
+setToggled을 통해 Toggle 상태를 변경하였고 Toggle 체크 되었을때 on/off를 표시해주었습니다.
+CSS 코드를 상대적으로 줄여보고 싶어 styled-components를 사용하였습니다.
 
-In the project directory, you can run:
+처음 사용해보는 styled-component에 처음에 약간 애먹었습니다.
+토글 버튼이 움직이는것과 동시에 뒷배경이 차오르게 하는 부분에서 어려웠지만
+label테그로 같은 기능들을 묶고 각각의 테그들을 연동 시켜 해결 하였습니다.
 
-### `npm start`
+# Modal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open Modal버튼을 누르면
+onclick을 통해 setOpend State가 true로 변경이 된다.
+이 state를 Modal 컴포넌트에 Open과 모달창을 닫는 function close를 전달하여
+modal창이 열렸을때 x 버튼을 눌러 setOpened 통해 opened의 state를 변경하여 창을 닫아 준다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+다항 연산자를 이용하여 className을 통해 open 상태를 체크 하였습니다.
+styled-component로 css를 짜기에는 중복되어 작성 해야 할 것 같아
+일반 CSS를 사용 하였는데 다시 시간이 있다면 로직을 수정하여 styled-component를 사용 해보고 싶습니다.
+CSS부분의 화면 레이아웃을 잡는데 시간을 많이 잡아 먹어 어려움이 있었습니다.
 
-### `npm test`
+# Tab
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+파일 구조가 복잡해지는 것이 싫어 app.js에 버튼을 등록하여 tab을 구현했는데
+app.js에 기능들이 들어가게되어 컴포넌트 단위로 구성하는 react를 잘 이용하지 못했나 생각이 들었습니다.
 
-### `npm run build`
+first, second, third 버튼을 통해 각각의 텝이 선택되었을때 탭버튼의 배경색을 변경 시켰으며
+활성화된 탭을 누르면 onClick을 통해 setActive에 활성화된 tab을 넣어 주었으며
+tab 컴포넌트에 활성화된 텝을 넘겨주어 다항연산자를 사용하여 텝을 활성화 시켜 주었습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Tag
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Tag 컴포넌트에 tag를 만들기 위한 배열 tags와 addTag, deleteTag, 기능을 감싼 div테그 테두리를 활성화를 위해 id에 테그 아이디를 activeTag 값을 넣어 활성화 상태를 업데이트 해주는 tag를 전달 해준다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+useEffect 를 사용하여 마우스 선택시 테그의 id를 받아 input 테그를 선택시 감싸는 div테그를 활성화 시켜주고 다른 곳을 선택했을 때는 id를 삭제하여 활성화 상태를 없애준다.
 
-### `npm run eject`
+typing 할때 onChange를 통해 changeHandler를 불러 typing 값에 input테그에 쓴 값을 변경 시켜 주면서
+tag를 추가 할때 typing 값을 전달하여 addTag를 해준다.
+엔터를 누를때 추가를 하도록 코드를 짰는데 공백 Tag가 생성되는 오류가 발생하여
+input테그의 내용과 활성화된 div id를 공백으로 초기화 시켜 주었습니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Click to Edit
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+이름과 나이의 input 테그에 내용을 넣고 click Edit 내부에서 클릭하면 내용이 하단의 문단에 들어가게 된다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+나이와 이름을 받아오기위해서 Dom요소에 직접 접근할 수 있는 Ref를 사용하여 name 과 age값을 받아와 문단에 전달 하였습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+useEffect 를 사용하여 마우스 선택시 테그의 id를 받아 input 밖 요소를 선택할때 inputAgeRef, inputNameRef 의 값을 불러와 print함수에 값을 전달하여 setClickName, setClickAge로 각 값의 State를 업데이트 해주었습니다.

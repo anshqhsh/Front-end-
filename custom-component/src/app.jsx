@@ -11,13 +11,13 @@ import ClickToEdit from './component/clickToEdit';
 function App() {
   const types = ['first', 'second', 'third'];
 
-  const [toggled, setToggled] = useState(false);
-  const [opened, setOpened] = useState(false);
-  const [active, setActive] = useState(types[0]);
-  const [tags, setTag] = useState([{ key: 1, text: 'CodeStates' }]);
-  const [activeTag, setActiveTag] = useState('');
-  const [clickName, setClickName] = useState('');
-  const [clickAge, setClickAge] = useState('');
+  const [toggled, setToggled] = useState(false); // Toggle
+  const [opened, setOpened] = useState(false); // Modal
+  const [active, setActive] = useState(types[0]); // Tab
+  const [tags, setTag] = useState([{ key: 1, text: 'CodeStates' }]); // 테그 배열
+  const [activeTag, setActiveTag] = useState(''); // Tag
+  const [clickName, setClickName] = useState(''); // Click to Edit name
+  const [clickAge, setClickAge] = useState(''); // Click to Edit name
 
   const addTag = text => {
     const tag = [...tags, { key: Date.now(), text: text }];
@@ -34,6 +34,7 @@ function App() {
     setClickAge(age);
   };
 
+  // TagContainer에 Id 추가
   const tag = text => {
     setActiveTag(text);
   };
